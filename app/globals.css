@@ -19,6 +19,27 @@
   --serif: var(--font-serif), "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --sans: var(--font-sans), "DM Sans", "Helvetica Neue", Arial, sans-serif;
   --devanagari: var(--font-devanagari), "Noto Serif Devanagari", serif;
+  --marathi-serif: var(--font-marathi-serif), "Tiro Devanagari Marathi",
+    var(--font-devanagari), "Noto Serif Devanagari", serif;
+  --marathi-sans: var(--font-marathi-sans), "Mukta", "Noto Sans Devanagari",
+    sans-serif;
+  --marathi-display: var(--font-marathi-display), "Yatra One",
+    "Tiro Devanagari Marathi", var(--font-devanagari), "Noto Serif Devanagari",
+    serif;
+  /* Extra Marathi faces — pick the one that suits the moment. */
+  --marathi-editorial: var(--font-marathi-editorial), "Eczar",
+    var(--font-marathi-serif), "Tiro Devanagari Marathi", serif;
+  --marathi-display-serif: var(--font-marathi-display-serif), "Rozha One",
+    var(--font-marathi-editorial), "Eczar", var(--font-marathi-serif),
+    "Tiro Devanagari Marathi", serif;
+  --marathi-rounded: var(--font-marathi-rounded), "Baloo 2",
+    var(--font-marathi-sans), "Mukta", sans-serif;
+  --marathi-calligraphy: var(--font-marathi-calligraphy), "Tillana",
+    var(--font-marathi-display), "Yatra One", serif;
+  --marathi-hand: var(--font-marathi-hand), "Kalam", var(--font-marathi-sans),
+    "Mukta", cursive;
+  --marathi-modern: var(--font-marathi-modern), "Hind", var(--font-marathi-sans),
+    "Mukta", sans-serif;
   --container: 1220px;
 }
 
@@ -112,6 +133,86 @@ button {
 
 .eyebrowOnDark {
   color: var(--mustard);
+}
+
+.marathiKicker {
+  margin-left: 8px;
+  font-family: var(--marathi-modern);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  opacity: 0.72;
+  white-space: nowrap;
+}
+
+@media (max-width: 560px) {
+  .marathiKicker {
+    display: none;
+  }
+}
+
+/*
+ * Marathi / Devanagari type utilities.
+ * Usage: <span lang="mr" className="marathi fontMarathiEditorial">अनुभूती</span>
+ */
+.marathi {
+  font-kerning: normal;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+}
+
+.fontMarathiSerif {
+  font-family: var(--marathi-serif);
+}
+
+.fontMarathiSans {
+  font-family: var(--marathi-sans);
+}
+
+.fontMarathiDisplay {
+  font-family: var(--marathi-display);
+}
+
+/* Literary, high-contrast serif — very good for story titles and pull quotes. */
+.fontMarathiEditorial {
+  font-family: var(--marathi-editorial);
+}
+
+/* Bold display serif — ideal for large statements and watermarks. */
+.fontMarathiDisplaySerif {
+  font-family: var(--marathi-display-serif);
+}
+
+/* Rounded and friendly — labels, badges, festive moments. */
+.fontMarathiRounded {
+  font-family: var(--marathi-rounded);
+}
+
+/* Calligraphic flourish — small accents and ornamental lines. */
+.fontMarathiCalligraphy {
+  font-family: var(--marathi-calligraphy);
+}
+
+/* Handwritten — notes, asides and personal touches. */
+.fontMarathiHand {
+  font-family: var(--marathi-hand);
+}
+
+/* Neutral UI sans — small captions, kickers and navigation. */
+.fontMarathiModern {
+  font-family: var(--marathi-modern);
+}
+
+/* These faces only ship a regular (upright) style, so never let the browser
+   fake an oblique when they sit inside an italic parent. */
+.fontMarathiEditorial,
+.fontMarathiDisplaySerif,
+.fontMarathiRounded,
+.fontMarathiCalligraphy,
+.fontMarathiHand,
+.fontMarathiModern {
+  font-style: normal;
 }
 
 .serif {

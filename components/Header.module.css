@@ -59,9 +59,10 @@
 }
 
 .devanagari {
-  font-family: var(--devanagari);
-  font-size: 11.5px;
+  font-family: var(--marathi-serif);
+  font-size: 12px;
   font-style: normal;
+  letter-spacing: 0.01em;
 }
 
 .dot {
@@ -236,6 +237,7 @@
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 79;
     overflow-y: auto;
     padding: 28px 20px 36px;
     background: var(--ivory);

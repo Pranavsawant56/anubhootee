@@ -25,7 +25,10 @@ export default function StoryPaths() {
       <div className="container">
         <div className={styles.intro}>
           <div className={styles.introLeft}>
-            <p className={`eyebrow ${styles.kicker}`}>A journal of living culture</p>
+            <p className={`eyebrow ${styles.kicker}`}>
+              A journal of living culture
+              <span className="marathiKicker" lang="mr">जिवंत संस्कृती</span>
+            </p>
             <h2 id="paths-title" className={styles.title}>
               Choose a path into the story
             </h2>

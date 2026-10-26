@@ -47,6 +47,7 @@ export default function HeroSection() {
             <p className={styles.eyebrow}>
               <span className={styles.eyebrowMark} aria-hidden="true">✳</span>
               Culture · Religion · Travel
+              <span className={styles.eyebrowMarathi} lang="mr">अनुभूती</span>
             </p>
 
             <h1 id="hero-title" className={styles.title}>
@@ -89,7 +90,7 @@ export default function HeroSection() {
               className={styles.image}
             />
             <div className={styles.mobileBadge} aria-hidden="true">
-              <span>अनुभूती</span>
+              <span lang="mr">अनुभूती</span>
             </div>
             <figcaption className={styles.mobileCaption}>
               <span>01</span>

@@ -25,6 +25,7 @@ const fs = require('fs');
       await Promise.all([...document.images].map(img => img.complete ? Promise.resolve() : new Promise(res => { img.onload = img.onerror = res; })));
     });
     await page.evaluate(() => { window.scrollTo(0, 0); window.dispatchEvent(new Event('scroll')); });
+    await page.addStyleTag({ content: 'nextjs-portal{display:none!important}' });
     await page.waitForTimeout(500);
     await page.screenshot({ path: `${out}\\pw-${width}.png`, fullPage: true });
     results[width] = await page.evaluate(() => {

@@ -36,7 +36,10 @@ export default function AboutSection() {
       <div className="container">
         <div className={styles.layout}>
           <div className={styles.copy}>
-            <p className={`eyebrow ${styles.kicker}`}>About Anubhootee</p>
+            <p className={`eyebrow ${styles.kicker}`}>
+              About Anubhootee
+              <span className="marathiKicker" lang="mr">अनुभूतीविषयी</span>
+            </p>
             <h2 id="about-title" className={styles.title}>
               A journal for culture,
               <br />
@@ -60,6 +63,9 @@ export default function AboutSection() {
           </div>
 
           <aside className={styles.panel} aria-label="Anubhootee editorial statement">
+            <span className={styles.panelWatermark} lang="mr" aria-hidden="true">
+              अनुभूती
+            </span>
             <p className={styles.panelLabel}>Anubhootee / Experiences in context</p>
             <p className={styles.panelQuote}>
               Look closer.
@@ -70,8 +76,9 @@ export default function AboutSection() {
             </p>
             <div className={styles.rule} aria-hidden="true" />
             <p className={styles.panelCaption}>
-              <span className={styles.devanagari}>अनुभूती</span> · An experience, understood.
+              <span className={styles.devanagari} lang="mr">अनुभूती</span> · An experience, understood.
             </p>
+            <p className={styles.panelMarathi} lang="mr">अनुभव · स्मृती · संस्कृती</p>
           </aside>
         </div>
       </div>

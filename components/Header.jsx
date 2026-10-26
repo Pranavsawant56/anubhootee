@@ -70,7 +70,7 @@ export default function Header() {
             <span className={styles.brandText}>
               <span className={styles.wordmark}>Anubhootee</span>
               <span className={styles.tagline}>
-                <span className={styles.devanagari}>अनुभूती</span>
+                <span className={styles.devanagari} lang="mr">अनुभूती</span>
                 <span className={styles.dot}>·</span>
                 Culture in context
               </span>
@@ -122,46 +122,47 @@ export default function Header() {
           </div>
         </div>
 
-        <div
-          id="mobile-navigation"
-          className={`${styles.mobilePanel} ${menuOpen ? styles.mobilePanelOpen : ""}`}
-          hidden={!menuOpen}
-        >
-          <nav className={styles.mobileNav} aria-label="Mobile navigation">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                className={styles.mobileNavLink}
-                href={sectionHref(link.href)}
-                onClick={() => setMenuOpen(false)}
-              >
-                <span>{link.label}</span>
-                <span aria-hidden="true">↗</span>
-              </a>
-            ))}
-          </nav>
-          <div className={styles.mobileActions}>
+      </header>
+
+      <div
+        id="mobile-navigation"
+        className={`${styles.mobilePanel} ${menuOpen ? styles.mobilePanelOpen : ""}`}
+        hidden={!menuOpen}
+      >
+        <nav className={styles.mobileNav} aria-label="Mobile navigation">
+          {navLinks.map((link) => (
             <a
-              className={styles.mobileCta}
-              href={sectionHref("#stories")}
+              key={link.label}
+              className={styles.mobileNavLink}
+              href={sectionHref(link.href)}
               onClick={() => setMenuOpen(false)}
             >
-              Read the journal <span aria-hidden="true">↗</span>
+              <span>{link.label}</span>
+              <span aria-hidden="true">↗</span>
             </a>
-            <button
-              type="button"
-              className={styles.mobileSearch}
-              onClick={() => {
-                setMenuOpen(false);
-                setSearchOpen(true);
-              }}
-            >
-              <Search size={17} aria-hidden="true" />
-              Search the journal
-            </button>
-          </div>
+          ))}
+        </nav>
+        <div className={styles.mobileActions}>
+          <a
+            className={styles.mobileCta}
+            href={sectionHref("#stories")}
+            onClick={() => setMenuOpen(false)}
+          >
+            Read the journal <span aria-hidden="true">↗</span>
+          </a>
+          <button
+            type="button"
+            className={styles.mobileSearch}
+            onClick={() => {
+              setMenuOpen(false);
+              setSearchOpen(true);
+            }}
+          >
+            <Search size={17} aria-hidden="true" />
+            Search the journal
+          </button>
         </div>
-      </header>
+      </div>
 
       <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>

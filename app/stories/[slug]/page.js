@@ -76,6 +76,7 @@ export default async function StoryPage({ params }) {
                   />
                   <p>Anubhootee journal</p>
                   <p className={styles.storyNumber}>Story {story.number}</p>
+                  <p className={styles.asideMarathi} lang="mr">अनुभूती · अनुभव</p>
                 </div>
               </div>
             </div>

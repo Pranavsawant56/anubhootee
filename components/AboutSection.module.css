@@ -85,11 +85,27 @@
 }
 
 .panel {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   min-height: 270px;
   margin-top: 46px;
   padding: 32px 30px 26px;
   background: var(--cream);
   color: var(--forest);
+}
+
+.panelWatermark {
+  position: absolute;
+  right: 10px;
+  bottom: 8px;
+  z-index: -1;
+  font-family: var(--marathi-display-serif);
+  font-size: 92px;
+  line-height: 1;
+  color: rgba(11, 53, 31, 0.06);
+  pointer-events: none;
+  user-select: none;
 }
 
 .panelLabel {
@@ -133,9 +149,20 @@
 }
 
 .devanagari {
-  font-family: var(--devanagari);
+  font-family: var(--marathi-serif);
   font-style: normal;
-  font-size: 12.5px;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+}
+
+.panelMarathi {
+  margin-top: 8px;
+  font-family: var(--marathi-calligraphy);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  color: #a28d1f;
 }
 
 @media (max-width: 1080px) {

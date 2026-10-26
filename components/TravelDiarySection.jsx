@@ -9,7 +9,10 @@ export default function TravelDiarySection() {
       <div className="container">
         <div className={styles.header}>
           <div>
-            <p className={`eyebrow ${styles.kicker}`}>Travel diary · Rajasthan</p>
+            <p className={`eyebrow ${styles.kicker}`}>
+              Travel diary · Rajasthan
+              <span className="marathiKicker" lang="mr">प्रवास · राजस्थान</span>
+            </p>
             <h2 id="travel-title" className={styles.title}>
               Udaipur, beyond the postcard.
             </h2>

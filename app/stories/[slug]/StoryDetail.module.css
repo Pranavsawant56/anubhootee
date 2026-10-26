@@ -110,6 +110,17 @@
   color: rgba(255, 252, 243, 0.82);
 }
 
+.heroAside .asideMarathi {
+  font-family: var(--marathi-hand);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: rgba(255, 252, 243, 0.62);
+}
+
 .bookmark {
   width: 42px;
   height: 42px;

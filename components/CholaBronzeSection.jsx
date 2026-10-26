@@ -9,7 +9,10 @@ export default function CholaBronzeSection() {
       <div className="container">
         <div className={styles.header}>
           <div>
-            <p className={`eyebrow ${styles.eyebrow}`}>Sacred art · A visual explainer</p>
+            <p className={`eyebrow ${styles.eyebrow}`}>
+              Sacred art · A visual explainer
+              <span className="marathiKicker" lang="mr">पवित्र कला</span>
+            </p>
             <h2 id="chola-title" className={styles.title}>
               The Chola Bronze
             </h2>

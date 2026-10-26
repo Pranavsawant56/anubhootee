@@ -7,9 +7,9 @@ import { stories } from "@/lib/stories";
 import styles from "./SearchDialog.module.css";
 
 const quickLinks = [
-  { label: "Choose a path into the story", href: "#explore" },
-  { label: "Udaipur, beyond the postcard", href: "#places" },
-  { label: "About Anubhootee", href: "#about" },
+  { label: "Choose a path into the story", href: "/#explore" },
+  { label: "Udaipur, beyond the postcard", href: "/#places" },
+  { label: "About Anubhootee", href: "/#about" },
 ];
 
 export default function SearchDialog({ open, onClose }) {

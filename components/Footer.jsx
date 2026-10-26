@@ -19,6 +19,7 @@ export default function Footer() {
               <div>
                 <p className={styles.wordmark}>Anubhootee</p>
                 <p className={styles.tagline}>Culture, belief &amp; place</p>
+                <p className={styles.marathiTagline} lang="mr">संस्कृती · श्रद्धा · स्थळ</p>
               </div>
             </div>
             <p className={styles.description}>
@@ -29,14 +30,14 @@ export default function Footer() {
           <div className={styles.linkGroups}>
             <div className={styles.linkGroup}>
               <p className={styles.linkLabel}>Explore</p>
-              <a href="#explore">By theme</a>
-              <a href="#stories">Journal stories</a>
-              <a href="#places">Travel diary</a>
+              <a href="/#explore">By theme</a>
+              <a href="/#stories">Journal stories</a>
+              <a href="/#places">Travel diary</a>
             </div>
             <div className={styles.linkGroup}>
               <p className={styles.linkLabel}>Anubhootee</p>
-              <a href="#about">About the journal</a>
-              <a href="#home">Back to top ↑</a>
+              <a href="/#about">About the journal</a>
+              <a href="#top">Back to top ↑</a>
             </div>
           </div>
         </div>
@@ -44,7 +45,7 @@ export default function Footer() {
         <div className={styles.bottom}>
           <p>© Anubhootee. All rights reserved.</p>
           <p>Concept imagery is used for this design preview.</p>
-          <a className={styles.backTop} href="#home" aria-label="Back to top">
+          <a className={styles.backTop} href="#top" aria-label="Back to top">
             <ArrowUp size={17} strokeWidth={1.4} aria-hidden="true" />
           </a>
         </div>

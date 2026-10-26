@@ -30,7 +30,10 @@ export default function JournalSection() {
     <section id="stories" className={styles.section} aria-labelledby="journal-title">
       <div className="container">
         <div className={styles.header}>
-          <p className={`eyebrow ${styles.kicker}`}>More from the journal</p>
+          <p className={`eyebrow ${styles.kicker}`}>
+            More from the journal
+            <span className="marathiKicker" lang="mr">अधिक वाचा</span>
+          </p>
           <h2 id="journal-title" className={styles.title}>
             Keep exploring
           </h2>

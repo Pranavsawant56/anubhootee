@@ -50,6 +50,18 @@
   line-height: 0.8;
 }
 
+.eyebrowMarathi {
+  margin-left: 2px;
+  font-family: var(--marathi-calligraphy);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--mustard);
+  opacity: 0.88;
+}
+
 .title {
   position: relative;
   max-width: 500px;
@@ -245,6 +257,10 @@
     font-size: 12px;
   }
 
+  .eyebrowMarathi {
+    display: none;
+  }
+
   .title {
     margin-top: 19px;
     font-size: clamp(46px, 13.5vw, 62px);
@@ -296,8 +312,8 @@
     border-radius: 50%;
     background: rgba(2, 24, 12, 0.55);
     color: var(--cream);
-    font-family: var(--devanagari);
-    font-size: 8px;
+    font-family: var(--marathi-rounded);
+    font-size: 8.5px;
     line-height: 1.15;
     text-align: center;
   }

@@ -55,9 +55,19 @@
   color: rgba(255, 252, 243, 0.8);
 }
 
+.marathiTagline {
+  margin-top: 6px;
+  font-family: var(--marathi-modern);
+  font-size: 10.5px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  color: rgba(255, 252, 243, 0.58);
+}
+
 .description {
   max-width: 355px;
-  margin-top: 17px;
+  margin-top: 14px;
   font-family: var(--serif);
   font-size: 14.5px;
   font-style: italic;
