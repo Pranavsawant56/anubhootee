@@ -1,13 +1,14 @@
 import Image from "next/image";
 import { ArrowDown } from "lucide-react";
 import { bronzeSteps, cholaCards } from "@/lib/content";
+import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 import styles from "./CholaBronzeSection.module.css";
 
 export default function CholaBronzeSection() {
   return (
     <section id="chola" className={styles.section} aria-labelledby="chola-title">
       <div className="container">
-        <div className={styles.header}>
+        <Reveal className={styles.header}>
           <div>
             <p className={`eyebrow ${styles.eyebrow}`}>
               Sacred art · A visual explainer
@@ -20,10 +21,10 @@ export default function CholaBronzeSection() {
           <p className={styles.headerNote}>
             A figure in motion. A world of meaning held in bronze.
           </p>
-        </div>
+        </Reveal>
 
         <div className={styles.main}>
-          <figure className={styles.figure}>
+          <Reveal as="figure" className={styles.figure} y={34} scale={0.985}>
             <div className={styles.imageWrap}>
               <Image
                 src="/images/nataraja.jpg"
@@ -37,9 +38,9 @@ export default function CholaBronzeSection() {
               <span className={styles.captionTitle}>Nataraja</span>
               <span className={styles.captionNote}>Shiva as Lord of the Dance</span>
             </figcaption>
-          </figure>
+          </Reveal>
 
-          <div className={styles.copy}>
+          <Reveal className={styles.copy} delay={0.12}>
             <div className={styles.noteMarker}>
               <span className={styles.noteLabel}>Culture note</span>
               <span className={styles.noteNumber}>01</span>
@@ -54,33 +55,37 @@ export default function CholaBronzeSection() {
               Explore the symbolism
               <ArrowDown size={17} strokeWidth={1.8} aria-hidden="true" />
             </a>
-          </div>
+          </Reveal>
         </div>
 
-        <div id="chola-symbolism" className={styles.symbolGrid}>
+        <RevealGroup
+          id="chola-symbolism"
+          className={styles.symbolGrid}
+          stagger={0.09}
+        >
           {cholaCards.map((card) => (
-            <article key={card.number} className={styles.symbolCard}>
+            <RevealItem as="article" key={card.number} className={styles.symbolCard}>
               <span className={styles.symbolNumber}>{card.number}</span>
               <h4 className={styles.symbolTitle}>{card.title}</h4>
               <p className={styles.symbolText}>{card.description}</p>
-            </article>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
 
-        <div className={styles.process}>
+        <Reveal className={styles.process}>
           <div className={styles.processIntro}>
             <p className={styles.processKicker}>From wax to bronze</p>
             <h4 className={styles.processTitle}>The lost-wax casting technique</h4>
           </div>
-          <ol className={styles.steps}>
+          <RevealGroup as="ol" className={styles.steps} stagger={0.09} delayChildren={0.12}>
             {bronzeSteps.map((step) => (
-              <li key={step.number} className={styles.step}>
+              <RevealItem as="li" key={step.number} className={styles.step}>
                 <span className={styles.stepNumber}>{step.number}</span>
                 <span className={styles.stepLabel}>{step.label}</span>
-              </li>
+              </RevealItem>
             ))}
-          </ol>
-        </div>
+          </RevealGroup>
+        </Reveal>
       </div>
     </section>
   );

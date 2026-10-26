@@ -28,6 +28,17 @@
   width: 148px;
   height: 330px;
   pointer-events: none;
+  transform-origin: 50% 100%;
+  animation: leafSway 13s ease-in-out infinite alternate;
+}
+
+@keyframes leafSway {
+  from {
+    transform: rotate(-1.2deg) translateY(0);
+  }
+  to {
+    transform: rotate(1.8deg) translateY(-6px);
+  }
 }
 
 .eyebrow {
@@ -166,7 +177,14 @@
 .imagePanel {
   position: relative;
   min-height: 512px;
+  overflow: hidden;
   background: var(--forest-deep);
+}
+
+.imageParallax {
+  position: absolute;
+  inset: -14% 0;
+  will-change: transform;
 }
 
 .image {

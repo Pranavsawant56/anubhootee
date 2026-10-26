@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 import { Menu, Search, X } from "lucide-react";
 import { navLinks } from "@/lib/content";
 import SearchDialog from "@/components/SearchDialog";
@@ -63,7 +64,12 @@ export default function Header() {
       <a className="skipLink" href="#main">
         Skip to content
       </a>
-      <header className={styles.header}>
+      <motion.header
+        className={styles.header}
+        initial={{ y: -18, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      >
         <div className={`container ${styles.inner}`}>
           <a className={styles.brand} href={sectionHref("#home")} aria-label="Anubhootee home">
             <img src="/images/header-emblem.png" alt="" width="90" height="90" />
@@ -122,7 +128,7 @@ export default function Header() {
           </div>
         </div>
 
-      </header>
+      </motion.header>
 
       <div
         id="mobile-navigation"

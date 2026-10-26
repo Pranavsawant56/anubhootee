@@ -1,15 +1,48 @@
+"use client";
+
+import { useRef } from "react";
 import Image from "next/image";
 import { ArrowDown, ArrowRight } from "lucide-react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import styles from "./HeroSection.module.css";
 
 const chips = ["Art & heritage", "Belief & ritual", "Places & memory"];
 
+const EASE = [0.22, 1, 0.36, 1];
+
+const copyVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.09, delayChildren: 0.08 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 26 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.72, ease: EASE } },
+};
+
 export default function HeroSection() {
+  const heroRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, 52]);
+
   return (
     <section id="home" className={styles.section} aria-labelledby="hero-title">
       <div className="container">
-        <div className={styles.hero}>
-          <div className={`${styles.copy} patternSurface`}>
+        <div ref={heroRef} className={styles.hero}>
+          <motion.div
+            variants={copyVariants}
+            initial="hidden"
+            animate="show"
+            className={`${styles.copy} patternSurface`}
+          >
             <svg
               className={styles.leaf}
               viewBox="0 0 190 390"
@@ -44,51 +77,80 @@ export default function HeroSection() {
               />
             </svg>
 
-            <p className={styles.eyebrow}>
+            <motion.p variants={itemVariants} className={styles.eyebrow}>
               <span className={styles.eyebrowMark} aria-hidden="true">✳</span>
               Culture · Religion · Travel
               <span className={styles.eyebrowMarathi} lang="mr">अनुभूती</span>
-            </p>
+            </motion.p>
 
-            <h1 id="hero-title" className={styles.title}>
+            <motion.h1
+              variants={itemVariants}
+              id="hero-title"
+              className={styles.title}
+            >
               India, in <span className={styles.accent}>stories</span>
               <br />&amp; symbols.
-            </h1>
+            </motion.h1>
 
-            <p className={styles.support}>
+            <motion.p variants={itemVariants} className={styles.support}>
               Explore the art, beliefs, traditions, and everyday experiences that give
               places their meaning.
-            </p>
+            </motion.p>
 
-            <div className={styles.actions}>
-              <a className={styles.primary} href="#stories">
+            <motion.div variants={itemVariants} className={styles.actions}>
+              <motion.a
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 0, scale: 0.985 }}
+                transition={{ duration: 0.2 }}
+                className={styles.primary}
+                href="#stories"
+              >
                 <span>Explore stories</span>
                 <ArrowRight size={18} strokeWidth={1.8} aria-hidden="true" />
-              </a>
-              <a className={styles.secondary} href="#explore">
+              </motion.a>
+              <motion.a
+                whileHover={{ x: 3 }}
+                transition={{ duration: 0.2 }}
+                className={styles.secondary}
+                href="#explore"
+              >
                 <span>Find your way in</span>
                 <ArrowDown size={17} strokeWidth={1.8} aria-hidden="true" />
-              </a>
-            </div>
+              </motion.a>
+            </motion.div>
 
-            <ul className={styles.chips} aria-label="Journal themes">
+            <motion.ul
+              variants={itemVariants}
+              className={styles.chips}
+              aria-label="Journal themes"
+            >
               {chips.map((chip) => (
                 <li key={chip}>
                   <a href="#explore">{chip}</a>
                 </li>
               ))}
-            </ul>
-          </div>
+            </motion.ul>
+          </motion.div>
 
-          <figure className={styles.imagePanel}>
-            <Image
-              src="/images/hero-temple.jpg"
-              alt="Worshippers walking through the stone courtyard of a South Indian temple in warm morning light"
-              fill
-              priority
-              sizes="(max-width: 900px) 100vw, 54vw"
-              className={styles.image}
-            />
+          <motion.figure
+            className={styles.imagePanel}
+            initial={{ opacity: 0, scale: 1.035 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.05, ease: EASE, delay: 0.12 }}
+          >
+            <motion.div
+              className={styles.imageParallax}
+              style={{ y: imageY }}
+            >
+              <Image
+                src="/images/hero-temple.jpg"
+                alt="Worshippers walking through the stone courtyard of a South Indian temple in warm morning light"
+                fill
+                priority
+                sizes="(max-width: 900px) 100vw, 54vw"
+                className={styles.image}
+              />
+            </motion.div>
             <div className={styles.mobileBadge} aria-hidden="true">
               <span lang="mr">अनुभूती</span>
             </div>
@@ -99,7 +161,7 @@ export default function HeroSection() {
             <figcaption className="srOnly">
               01 | A morning of shared worship
             </figcaption>
-          </figure>
+          </motion.figure>
         </div>
       </div>
     </section>

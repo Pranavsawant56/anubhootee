@@ -1,10 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { journalFilters } from "@/lib/content";
 import { stories } from "@/lib/stories";
 import StoryCard from "@/components/StoryCard";
+import { Reveal } from "@/components/Reveal";
 import styles from "./JournalSection.module.css";
+
+const EASE = [0.22, 1, 0.36, 1];
 
 export default function JournalSection() {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -29,7 +33,7 @@ export default function JournalSection() {
   return (
     <section id="stories" className={styles.section} aria-labelledby="journal-title">
       <div className="container">
-        <div className={styles.header}>
+        <Reveal className={styles.header}>
           <p className={`eyebrow ${styles.kicker}`}>
             More from the journal
             <span className="marathiKicker" lang="mr">अधिक वाचा</span>
@@ -40,9 +44,14 @@ export default function JournalSection() {
           <p className={styles.headerText}>
             Short reads on belief, food, place, and the knowledge people keep alive.
           </p>
-        </div>
+        </Reveal>
 
-        <div className={styles.filterRow} role="group" aria-label="Filter journal stories">
+        <Reveal
+          className={styles.filterRow}
+          role="group"
+          aria-label="Filter journal stories"
+          delay={0.08}
+        >
           {journalFilters.map((filter) => (
             <button
               key={filter.key}
@@ -54,7 +63,7 @@ export default function JournalSection() {
               {filter.label}
             </button>
           ))}
-        </div>
+        </Reveal>
 
         <p className="srOnly" aria-live="polite">
           Showing {visibleStories.length} {visibleStories.length === 1 ? "story" : "stories"}
@@ -62,9 +71,26 @@ export default function JournalSection() {
         </p>
 
         <div className={styles.grid}>
-          {visibleStories.map((story) => (
-            <StoryCard key={story.slug} story={story} />
-          ))}
+          <AnimatePresence mode="popLayout">
+            {visibleStories.map((story, index) => (
+              <motion.div
+                key={story.slug}
+                layout
+                className={styles.cell}
+                initial={{ opacity: 0, y: 26 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                exit={{ opacity: 0, scale: 0.97, transition: { duration: 0.22 } }}
+                transition={{
+                  duration: 0.55,
+                  delay: Math.min(index, 3) * 0.05,
+                  ease: EASE,
+                }}
+              >
+                <StoryCard story={story} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
       </div>
     </section>

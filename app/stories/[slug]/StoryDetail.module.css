@@ -368,6 +368,11 @@
   margin-top: 30px;
 }
 
+.relatedCell {
+  display: flex;
+  min-width: 0;
+}
+
 @media (max-width: 980px) {
   .hero {
     padding: 38px 0 48px;

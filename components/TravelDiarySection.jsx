@@ -1,13 +1,14 @@
 import Image from "next/image";
 import { Flower2 } from "lucide-react";
 import { travelCards } from "@/lib/content";
+import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 import styles from "./TravelDiarySection.module.css";
 
 export default function TravelDiarySection() {
   return (
     <section id="places" className={styles.section} aria-labelledby="travel-title">
       <div className="container">
-        <div className={styles.header}>
+        <Reveal className={styles.header}>
           <div>
             <p className={`eyebrow ${styles.kicker}`}>
               Travel diary · Rajasthan
@@ -21,10 +22,10 @@ export default function TravelDiarySection() {
             The city of lakes is made of more than palace views: local stories, changing
             plans, crowded lanes, and the moments no itinerary can predict.
           </p>
-        </div>
+        </Reveal>
 
         <div className={styles.layout}>
-          <figure className={styles.figure}>
+          <Reveal as="figure" className={styles.figure} y={32} scale={0.985}>
             <div className={styles.imageWrap}>
               <Image
                 src="/images/udaipur.jpg"
@@ -38,25 +39,25 @@ export default function TravelDiarySection() {
               <span className={styles.captionTitle}>Udaipur</span>
               <span className={styles.captionNote}>Mewar · Rajasthan</span>
             </figcaption>
-          </figure>
+          </Reveal>
 
           <div className={styles.side}>
-            <div className={styles.cards}>
+            <RevealGroup className={styles.cards} stagger={0.1}>
               {travelCards.map((card) => (
-                <article key={card.number} className={styles.card}>
+                <RevealItem as="article" key={card.number} className={styles.card}>
                   <p className={styles.cardKicker}>
                     {card.number} · {card.kicker}
                   </p>
                   <h3 className={styles.cardTitle}>{card.title}</h3>
                   <p className={styles.cardText}>{card.description}</p>
-                </article>
+                </RevealItem>
               ))}
-            </div>
+            </RevealGroup>
 
-            <div className={`${styles.message} patternSurface`}>
+            <Reveal className={`${styles.message} patternSurface`} delay={0.12}>
               <Flower2 size={19} strokeWidth={1.5} aria-hidden="true" />
               <p>Some journeys are measured not in miles, but in moments that stay.</p>
-            </div>
+            </Reveal>
           </div>
         </div>
       </div>

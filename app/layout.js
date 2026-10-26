@@ -13,6 +13,7 @@ import {
   Yatra_One,
 } from "next/font/google";
 import "./globals.css";
+import MotionProvider from "@/components/MotionProvider";
 
 const serif = Cormorant_Garamond({
   subsets: ["latin"],
@@ -139,7 +140,9 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${serif.variable} ${sans.variable} ${devanagari.variable} ${marathiSerif.variable} ${marathiSans.variable} ${marathiDisplay.variable} ${marathiEditorial.variable} ${marathiDisplaySerif.variable} ${marathiRounded.variable} ${marathiCalligraphy.variable} ${marathiHand.variable} ${marathiModern.variable}`}
     >
-      <body id="top">{children}</body>
+      <body id="top">
+        <MotionProvider>{children}</MotionProvider>
+      </body>
     </html>
   );
 }

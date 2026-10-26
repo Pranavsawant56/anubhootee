@@ -106,6 +106,16 @@
   color: rgba(11, 53, 31, 0.06);
   pointer-events: none;
   user-select: none;
+  animation: watermarkBreathe 11s ease-in-out infinite alternate;
+}
+
+@keyframes watermarkBreathe {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-8px);
+  }
 }
 
 .panelLabel {

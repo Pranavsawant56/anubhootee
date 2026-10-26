@@ -5,6 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BookmarkButton from "@/components/BookmarkButton";
 import StoryCard from "@/components/StoryCard";
+import ReadingProgress from "@/components/ReadingProgress";
+import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 import { getRelatedStories, getStory, stories } from "@/lib/stories";
 import styles from "./StoryDetail.module.css";
 
@@ -42,19 +44,20 @@ export default async function StoryPage({ params }) {
 
   return (
     <>
+      <ReadingProgress />
       <Header />
       <main id="main">
         <article>
           <header className={styles.hero}>
             <div className="container">
-              <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+              <Reveal as="nav" className={styles.breadcrumb} aria-label="Breadcrumb" y={12}>
                 <a href="/#stories">Journal</a>
                 <span aria-hidden="true">/</span>
                 <span>{story.categoryLabel}</span>
-              </nav>
+              </Reveal>
 
-              <div className={styles.heroGrid}>
-                <div>
+              <RevealGroup className={styles.heroGrid} stagger={0.1}>
+                <RevealItem>
                   <p className={`eyebrow ${styles.kicker}`}>{story.categoryLabel}</p>
                   <h1 className={styles.title}>{story.title}</h1>
                   <p className={styles.standfirst}>{story.standfirst}</p>
@@ -65,9 +68,9 @@ export default async function StoryPage({ params }) {
                     <span className={styles.metaDot} aria-hidden="true" />
                     <span>{story.meta}</span>
                   </div>
-                </div>
+                </RevealItem>
 
-                <div className={styles.heroAside}>
+                <RevealItem className={styles.heroAside} delay={0.08}>
                   <BookmarkButton
                     slug={story.slug}
                     title={story.title}
@@ -77,14 +80,14 @@ export default async function StoryPage({ params }) {
                   <p>Anubhootee journal</p>
                   <p className={styles.storyNumber}>Story {story.number}</p>
                   <p className={styles.asideMarathi} lang="mr">अनुभूती · अनुभव</p>
-                </div>
-              </div>
+                </RevealItem>
+              </RevealGroup>
             </div>
           </header>
 
           <div className={styles.imageSection}>
             <div className="container">
-              <figure className={styles.figure}>
+              <Reveal as="figure" className={styles.figure} y={30} scale={0.99}>
                 <div className={styles.imageWrap}>
                   <Image
                     src={story.image}
@@ -99,7 +102,7 @@ export default async function StoryPage({ params }) {
                   <span>{story.imageAlt}</span>
                   <span>{story.meta}</span>
                 </figcaption>
-              </figure>
+              </Reveal>
             </div>
           </div>
 
@@ -151,7 +154,7 @@ export default async function StoryPage({ params }) {
 
           <section className={styles.related} aria-labelledby="related-title">
             <div className="container">
-              <div className={styles.relatedHeader}>
+              <Reveal className={styles.relatedHeader}>
                 <div>
                   <p className={`eyebrow ${styles.relatedKicker}`}>Keep reading</p>
                   <h2 id="related-title" className={styles.relatedTitle}>
@@ -161,13 +164,15 @@ export default async function StoryPage({ params }) {
                 <a className={styles.allStories} href="/#stories">
                   All stories <ArrowRight size={16} strokeWidth={1.7} aria-hidden="true" />
                 </a>
-              </div>
+              </Reveal>
 
-              <div className={styles.relatedGrid}>
+              <RevealGroup className={styles.relatedGrid} stagger={0.09}>
                 {related.map((item) => (
-                  <StoryCard key={item.slug} story={item} />
+                  <RevealItem key={item.slug} className={styles.relatedCell}>
+                    <StoryCard story={item} />
+                  </RevealItem>
                 ))}
-              </div>
+              </RevealGroup>
             </div>
           </section>
         </article>

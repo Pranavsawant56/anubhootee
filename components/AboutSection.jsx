@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 import styles from "./AboutSection.module.css";
 
 export default function AboutSection() {
@@ -35,17 +36,17 @@ export default function AboutSection() {
 
       <div className="container">
         <div className={styles.layout}>
-          <div className={styles.copy}>
-            <p className={`eyebrow ${styles.kicker}`}>
+          <RevealGroup className={styles.copy} stagger={0.09}>
+            <RevealItem as="p" className={`eyebrow ${styles.kicker}`}>
               About Anubhootee
               <span className="marathiKicker" lang="mr">अनुभूतीविषयी</span>
-            </p>
-            <h2 id="about-title" className={styles.title}>
+            </RevealItem>
+            <RevealItem as="h2" id="about-title" className={styles.title}>
               A journal for culture,
               <br />
               belief, and place.
-            </h2>
-            <div className={styles.paragraphs}>
+            </RevealItem>
+            <RevealItem className={styles.paragraphs}>
               <p>
                 Anubhootee brings history and lived experience together. We look closely
                 at what symbols mean, how traditions are practiced, and what makes a place
@@ -55,14 +56,20 @@ export default function AboutSection() {
                 Every story begins with curiosity—and leaves room for context, many
                 perspectives, and the people who keep culture alive.
               </p>
-            </div>
-            <a className={styles.cta} href="#stories">
+            </RevealItem>
+            <RevealItem as="a" className={styles.cta} href="#stories">
               <span>Explore the journal</span>
               <ArrowRight size={18} strokeWidth={1.8} aria-hidden="true" />
-            </a>
-          </div>
+            </RevealItem>
+          </RevealGroup>
 
-          <aside className={styles.panel} aria-label="Anubhootee editorial statement">
+          <Reveal
+            as="aside"
+            className={styles.panel}
+            aria-label="Anubhootee editorial statement"
+            delay={0.14}
+            scale={0.985}
+          >
             <span className={styles.panelWatermark} lang="mr" aria-hidden="true">
               अनुभूती
             </span>
@@ -79,7 +86,7 @@ export default function AboutSection() {
               <span className={styles.devanagari} lang="mr">अनुभूती</span> · An experience, understood.
             </p>
             <p className={styles.panelMarathi} lang="mr">अनुभव · स्मृती · संस्कृती</p>
-          </aside>
+          </Reveal>
         </div>
       </div>
     </section>

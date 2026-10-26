@@ -2,6 +2,7 @@
 
 import { ArrowUpRight } from "lucide-react";
 import { storyPaths } from "@/lib/content";
+import { RevealGroup, RevealItem } from "@/components/Reveal";
 import styles from "./StoryPaths.module.css";
 
 const toneClass = {
@@ -23,8 +24,8 @@ export default function StoryPaths() {
   return (
     <section id="explore" className={styles.section} aria-labelledby="paths-title">
       <div className="container">
-        <div className={styles.intro}>
-          <div className={styles.introLeft}>
+        <RevealGroup className={styles.intro} stagger={0.1}>
+          <RevealItem className={styles.introLeft}>
             <p className={`eyebrow ${styles.kicker}`}>
               A journal of living culture
               <span className="marathiKicker" lang="mr">जिवंत संस्कृती</span>
@@ -32,17 +33,18 @@ export default function StoryPaths() {
             <h2 id="paths-title" className={styles.title}>
               Choose a path into the story
             </h2>
-          </div>
-          <p className={styles.introNote}>
+          </RevealItem>
+          <RevealItem as="p" className={styles.introNote} delay={0.08}>
             Start with an object, a ritual, a place—or a moment that stayed with you.
-          </p>
-        </div>
+          </RevealItem>
+        </RevealGroup>
 
-        <div className={styles.grid}>
+        <RevealGroup className={styles.grid} stagger={0.09}>
           {storyPaths.map((path) => {
             const href = path.destination === "places" ? "#places" : "#stories";
             return (
-              <a
+              <RevealItem
+                as="a"
                 key={path.number}
                 href={href}
                 className={`${styles.card} ${toneClass[path.tone]}`}
@@ -89,10 +91,10 @@ export default function StoryPaths() {
                   <h3 className={styles.cardTitle}>{path.title}</h3>
                   <p className={styles.cardDescription}>{path.description}</p>
                 </div>
-              </a>
+              </RevealItem>
             );
           })}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   );

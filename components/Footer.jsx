@@ -1,4 +1,5 @@
 import { ArrowUp } from "lucide-react";
+import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
@@ -6,8 +7,8 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.patternBand} aria-hidden="true" />
       <div className="container">
-        <div className={styles.top}>
-          <div className={styles.brandBlock}>
+        <RevealGroup className={styles.top} stagger={0.1}>
+          <RevealItem className={styles.brandBlock}>
             <div className={styles.brandRow}>
               <img
                 className={styles.emblem}
@@ -25,9 +26,9 @@ export default function Footer() {
             <p className={styles.description}>
               A modern journal of Indian culture, sacred art, and lived experience.
             </p>
-          </div>
+          </RevealItem>
 
-          <div className={styles.linkGroups}>
+          <RevealItem className={styles.linkGroups} delay={0.08}>
             <div className={styles.linkGroup}>
               <p className={styles.linkLabel}>Explore</p>
               <a href="/#explore">By theme</a>
@@ -39,16 +40,16 @@ export default function Footer() {
               <a href="/#about">About the journal</a>
               <a href="#top">Back to top ↑</a>
             </div>
-          </div>
-        </div>
+          </RevealItem>
+        </RevealGroup>
 
-        <div className={styles.bottom}>
+        <Reveal className={styles.bottom} delay={0.1}>
           <p>© Anubhootee. All rights reserved.</p>
           <p>Concept imagery is used for this design preview.</p>
           <a className={styles.backTop} href="#top" aria-label="Back to top">
             <ArrowUp size={17} strokeWidth={1.4} aria-hidden="true" />
           </a>
-        </div>
+        </Reveal>
       </div>
     </footer>
   );
