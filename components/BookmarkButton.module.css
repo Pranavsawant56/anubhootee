@@ -1,0 +1,33 @@
+.bookmark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  padding: 0;
+  border: 1px solid rgba(255, 252, 243, 0.6);
+  border-radius: 50%;
+  background: rgba(2, 24, 12, 0.46);
+  color: var(--cream);
+  cursor: pointer;
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease,
+    transform 180ms ease;
+}
+
+.bookmark:hover {
+  background: rgba(2, 24, 12, 0.72);
+  border-color: var(--cream);
+  transform: scale(1.04);
+}
+
+.saved {
+  background: var(--mustard);
+  border-color: var(--mustard);
+  color: var(--forest);
+}
+
+.saved:hover {
+  background: var(--mustard-soft);
+  border-color: var(--mustard-soft);
+}
